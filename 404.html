@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        :root {
+    /*--link: #0070f3;*/
+    --link: #a7afce;
+    --link-visited: #9e8dc7;
+    --text: #e6e2e2;
+    --text-tr: rgba(230, 226, 226, 0);
+    --text2: #bdb5b5;
+    --block-highlight: #443d3d;
+    --bg: #222020;
+    --bg2: #1c1b1b;
+    --hc-shadow: rgba(19, 15, 15, 0.4);
+    --hc-shadow-hover: rgba(0, 0, 0, 0.4);
+    --shadow: rgba(24, 23, 23, 1);
+    /*--bg2: #332f2f;*/
+    --card-bg: linear-gradient(to bottom, #332f2f 0%, #2d2a2a 100%);
+    --card-bg-hover: linear-gradient(to bottom, #464141 0%, #3d3939 100%);
+    --icons: #a9a2a2;
+    --icons-hover: #eadede;
+    --header-fade: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+}
+body {
+    color: var(--text);
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, Cantarell, "Segoe UI", Roboto, Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+    padding-bottom: 4rem;
+}
+.content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 0.7rem;
+}
+.header-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 18rem;
+    background: var(--header-fade);
+    z-index: -1;
+}
+h1 {
+    font-size: 2.2rem;
+    margin-top: 4rem;
+    margin-bottom: 0.75rem;
+}
+h2 {
+    font-size: 1.6rem;
+    margin-top: 4rem;
+    margin-bottom: 0.75rem;
+}
+h3 {
+    font-size: 18px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+header h2 {
+    margin-bottom: 0.5rem;
+}
+header h2 a:any-link {
+    color: var(--text);
+    text-decoration-color: var(--text-tr);
+    transition: text-decoration 0.1s;
+}
+header h2 a:hover {
+    text-decoration-color: var(--text);
+}
+article {
+    font-size: 18px;
+}
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+}
+.toplinks {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+.toplinks a {
+    text-decoration: none;
+    height: 1.75rem;
+}
+.toplinks a:hover svg {
+    fill: var(--icons-hover);
+}
+.toplinks svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 6px;
+    fill: var(--icons);
+}
+.toplinks .email-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+.icon-inner {
+    fill: var(--bg2);
+}
+header {
+    margin-bottom: 3rem;
+}
+
+/* article links */
+.article-link {
+    font-size: 22px;
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.article-link.in-article {
+    padding: 0 0 0.8rem 0;
+}
+.article-link a {
+    padding-bottom: 0.3rem;
+}
+a:link {
+    color: var(--link);
+}
+a:visited {
+    color: var(--link-visited);
+}
+.article-link > span {
+    color: var(--text2);
+    font-size: 18px;
+    padding-left: 1rem;
+    text-align: right;
+}
+.article-link.in-article > span {
+    padding-left: 0;
+    text-align: inherit;
+}
+.article-link > span a:any-link {
+    color: var(--text2);
+}
+.article-link > span > span {
+    display: inline-block;
+}
+@media (max-width: 700px) {
+    .article-link {
+        flex-direction: column;
+    }
+}
+p img {
+    max-width: calc(100vw - 0.7rem - 0.7rem - 8px - 8px);
+    max-height: 90vh;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 2rem 0 var(--hc-shadow-hover);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+p img[src$='#raw'] {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* hovercards */
+.hovercard-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hovercard {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    width: 20rem;
+    padding: 0.75rem;
+    flex-shrink: 0;
+    flex-grow: 1;
+    /*margin-bottom: 1rem;*/
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.75rem;
+    box-shadow: 0 0.3rem 1rem 0 var(--hc-shadow);
+    border-top: 1px solid rgba(255, 200, 200, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.15s;
+}
+.hovercard:hover {
+    box-shadow: 0 0.5rem 2rem 0 var(--hc-shadow-hover);
+}
+.hovercard:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.0);
+    border-radius: 0.5rem;
+    transition: background 0.15s, box-shadow 0.15s;
+    pointer-events: none;
+}
+.hovercard:hover:before {
+    background: rgba(255, 255, 255, 0.05);
+}
+.hovercard-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.hovercard-title a {
+    color: var(--text);
+    text-decoration: underline;
+}
+.hovercard-details {
+    font-size: 1rem;
+    color: var(--text2);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        /*--link: #0070f3;*/
+        --link: #295180;
+        --link-visited: #4f4472;
+        --text: #2f2b2b;
+        --text-tr: rgba(47, 43, 43, 0);
+        --text2: #3d3a3a;
+        --block-highlight: #443d3d;
+        --bg: #f7f0f0;
+        --bg2: #e6dfdf;
+        --hc-shadow: rgba(68, 57, 57, 0.1);
+        --hc-shadow-hover: rgba(68, 57, 57, 0.4);
+        --shadow: rgba(136, 130, 130, 0.6);
+        /*--bg2: #332f2f;*/
+        --card-bg: linear-gradient(to bottom, #f2ebeb 0%, #ebe4e4 100%);
+        --card-bg-hover: linear-gradient(to bottom, #f6f4f4 0%, #eae5e5 100%);
+        --icons: #4f4a4a;
+        --icons-hover: #211c1c;
+        --header-fade: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    .hovercard {
+        border: 1px solid rgba(10, 0, 0, 0.15);
+    }
+    .hovercard:hover:before {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+    </style>
+    <script>
+        function hc_scroll(hc, amount, multiplier) {
+            if (amount <= 0) {
+                return;
+            }
+            hc.parentElement.parentElement.firstElementChild.scrollBy(amount * multiplier, 0);
+            requestAnimationFrame(() => hc_scroll(hc, (amount * 0.9) - 2, multiplier));
+        }
+    </script>
+    
+</head>
+<body>
+<div class="content">
+    <header>
+        <h2><a href="/">David Shlemayev</a></h2>
+        <div class="subtitle">I Build Things</div>
+        <div class="toplinks">
+            <a href="https://github.com/Wazzaps"><svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%"/><path class="icon-inner" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg></a>
+            <a href="https://liberapay.com/wazzaps"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Liberapay" viewBox="0 0 24 24"><path d="M2.32 0A2.32 2.32 0 0 0 0 2.32v19.36A2.32 2.32 0 0 0 2.32 24h19.36A2.32 2.32 0 0 0 24 21.68V2.32A2.32 2.32 0 0 0 21.68 0zm9.2 3.98-2.26 9.4a2.95 2.95 0 0 0-.07.54.85.85 0 0 0 .09.44.7.7 0 0 0 .33.3c.16.07.38.12.66.14l-.49 2.01a4.5 4.5 0 0 1-1.82-.3c-.44-.2-.76-.47-.95-.82a2.4 2.4 0 0 1-.28-1.2c.01-.46.07-.94.2-1.45L9 4.37zm3.9 3.89c.62 0 1.14.09 1.58.28a2.93 2.93 0 0 1 1.72 1.88 5.85 5.85 0 0 1-.19 3.56 5.16 5.16 0 0 1-1.09 1.7 4.84 4.84 0 0 1-1.66 1.12 5.5 5.5 0 0 1-2.11.4 6.4 6.4 0 0 1-1.11-.1l-.74 2.96H9.4l2.71-11.3c.44-.13.94-.24 1.5-.35a10.04 10.04 0 0 1 1.82-.15zm-.3 2.04a4.67 4.67 0 0 0-.98.1l-1.15 4.75a3.4 3.4 0 0 0 1.85-.17 2.56 2.56 0 0 0 .89-.66c.24-.29.43-.63.57-1.02a4.03 4.03 0 0 0 .2-1.32c0-.47-.1-.86-.3-1.2-.21-.32-.57-.48-1.08-.48z"/></svg></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <svg xmlns="http://www.w3.org/2000/svg" aria-label="Email" viewBox="0 0 494.09 494.09" xml:space="preserve" class="email-icon"><path d="M468.28 85.44H25.81A25.8 25.8 0 0 0 0 111.24v271.6a25.81 25.81 0 0 0 25.8 25.81h442.48a25.8 25.8 0 0 0 25.8-25.8v-271.6a25.8 25.8 0 0 0-25.8-25.81zm-16.92 256.13a16.48 16.48 0 0 1-21.03 25.35l-116.15-96.4-56.62 46.98a16.43 16.43 0 0 1-21.03 0L179.9 270.5l-116.15 96.4a16.46 16.46 0 1 1-21.03-25.34l111.4-92.47-111.4-92.46a16.48 16.48 0 0 1 21.03-25.35l183.28 152.13 183.29-152.13a16.48 16.48 0 0 1 21.03 25.35l-111.4 92.46 111.4 92.47z"/></svg>
+            <span>david.shlemayev at gmail dot com</span>
+        </div>
+        <div class="header-fade"></div>
+    </header>
+    <style type="text/css" media="screen">
+  .container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+</style>
+
+<div class="container">
+  <h1>404</h1>
+
+  <p><strong>Page not found :(</strong></p>
+  <p>The requested page could not be found.</p>
+</div>
+
+</div>
+</body>
+</html>
